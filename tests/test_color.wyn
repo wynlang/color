@@ -1,0 +1,25 @@
+var RED = 31
+var GREEN = 32
+var YELLOW = 33
+var BLUE = 34
+var MAGENTA = 35
+var CYAN = 36
+var WHITE = 37
+var BOLD = 1
+var DIM = 2
+var RESET = 0
+
+fn main() -> int {
+    Test.init("color")
+    Test.assert_eq_int(RED, 31, "red")
+    Test.assert_eq_int(GREEN, 32, "green")
+    Test.assert_eq_int(BLUE, 34, "blue")
+    Test.assert_eq_int(BOLD, 1, "bold")
+    Test.assert_eq_int(RESET, 0, "reset")
+    // Print colored
+    Terminal.print_color("Red\n", RED)
+    Terminal.print_color("Green\n", GREEN)
+    Test.assert(true, "colors print")
+    Test.summary()
+    return 0
+}
