@@ -1,0 +1,4 @@
+// Color — terminal color formatting (builtin)
+// Color.red(s), Color.green(s), Color.yellow(s), Color.blue(s)
+// Color.cyan(s), Color.magenta(s), Color.gray(s)
+// Color.bold(s), Color.dim(s), Color.underline(s)
