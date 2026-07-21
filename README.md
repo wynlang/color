@@ -1,4 +1,4 @@
-# color — Official Wyn Package
+# color - Official Wyn Package
 
 Named terminal colors. Pure Wyn.
 
