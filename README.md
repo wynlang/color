@@ -11,9 +11,15 @@ wyn pkg install github.com/wynlang/color
 ## Usage
 
 ```wyn
-Terminal.print_color("Error!", RED)
-Terminal.print_color("Success!", GREEN)
-Terminal.print_color("Warning!", YELLOW)
+import color
+
+println(color.red("Error!"))
+println(color.green("Success!"))
+println(color.bold(color.blue("Bold blue")))
 ```
 
-Constants: RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE, BOLD, DIM, RESET
+Each helper wraps its argument in an ANSI SGR sequence and a reset, so the
+returned string is safe to `println` or concatenate.
+
+Colors: `red green yellow blue magenta cyan white gray`
+Styles: `bold dim underline`

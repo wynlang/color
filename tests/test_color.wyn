@@ -1,30 +1,14 @@
-var RED = 31
-var GREEN = 32
-var BLUE = 34
-var BOLD = 1
-var RESET = 0
+// Exercises the shipped lib in src/color.wyn via the tests/color.wyn symlink.
+import color
 
-test "red" {
-    assert_eq(RED, 31)
+test "red wraps with 31 and reset" {
+    assert_eq(color.red("x"), "\e[31mx\e[0m")
 }
-
-test "green" {
-    assert_eq(GREEN, 32)
-}
-
-test "blue" {
-    assert_eq(BLUE, 34)
-}
-
-test "bold" {
-    assert_eq(BOLD, 1)
-}
-
-test "reset" {
-    assert_eq(RESET, 0)
-}
-
-test "colors print" {
-    Terminal.print_color("ok\n", GREEN)
-    assert(true)
-}
+test "green code" { assert_eq(color.green("ok"), "\e[32mok\e[0m") }
+test "yellow code" { assert_eq(color.yellow("w"), "\e[33mw\e[0m") }
+test "blue code" { assert_eq(color.blue("b"), "\e[34mb\e[0m") }
+test "bold code" { assert_eq(color.bold("B"), "\e[1mB\e[0m") }
+test "dim code" { assert_eq(color.dim("d"), "\e[2md\e[0m") }
+test "underline code" { assert_eq(color.underline("u"), "\e[4mu\e[0m") }
+test "content preserved" { assert(color.cyan("hello world").contains("hello world")) }
+test "always resets" { assert(color.magenta("z").ends_with("\e[0m")) }

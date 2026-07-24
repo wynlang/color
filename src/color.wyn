@@ -1,4 +1,24 @@
-// Color - terminal color formatting (builtin)
-// Color.red(s), Color.green(s), Color.yellow(s), Color.blue(s)
-// Color.cyan(s), Color.magenta(s), Color.gray(s)
-// Color.bold(s), Color.dim(s), Color.underline(s)
+// color - wrap terminal text in ANSI color / style escapes. Pure Wyn.
+// Each helper returns the input wrapped in a SGR sequence + reset, so the
+// value is safe to println or concatenate.
+
+fn wrap(code: string, s: string) -> string {
+    return "\e[" + code + "m" + s + "\e[0m"
+}
+
+// Foreground colors
+pub fn red(s: string) -> string { return wrap("31", s) }
+pub fn green(s: string) -> string { return wrap("32", s) }
+pub fn yellow(s: string) -> string { return wrap("33", s) }
+pub fn blue(s: string) -> string { return wrap("34", s) }
+pub fn magenta(s: string) -> string { return wrap("35", s) }
+pub fn cyan(s: string) -> string { return wrap("36", s) }
+pub fn white(s: string) -> string { return wrap("37", s) }
+pub fn gray(s: string) -> string { return wrap("90", s) }
+
+// Styles
+pub fn bold(s: string) -> string { return wrap("1", s) }
+pub fn dim(s: string) -> string { return wrap("2", s) }
+pub fn underline(s: string) -> string { return wrap("4", s) }
+
+// Strip a leading/simple SGR wrapper is out of scope; use .contains to test.

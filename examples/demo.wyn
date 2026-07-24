@@ -1,0 +1,8 @@
+import color
+
+fn main() {
+    println(color.red("Error!"))
+    println(color.green("Success!"))
+    println(color.yellow("Warning!"))
+    println(color.bold(color.blue("Bold blue")))
+}
